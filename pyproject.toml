@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msdataqc"
+version = "0.1.0"
+description = "Quality control for longitudinal multiple sclerosis MRI datasets: lesion ground-truth consistency, contrast drift between visits, protocol checks against the 2021 consensus, lesion counting conventions, probability maps, a one-page QC report, and MSLesSeg to BIDS."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Cedric Conday"}]
+keywords = ["multiple sclerosis"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Topic :: Scientific/Engineering :: Medical Science Apps."]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "pandas>=2", "nibabel>=5", "matplotlib>=3.7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/CedricConday/msdataqc"
+
+[project.scripts]
+msdataqc = "msdataqc.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["msdataqc*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
